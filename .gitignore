@@ -1,0 +1,37 @@
+# 构建目录
+build/
+cmake-build-*/
+
+# 编译产物
+*.o
+*.a
+*.so
+*.dylib
+
+# 可执行文件
+SSD1306_Monitor
+ssd1306_cpu_monitor
+check_i2c_speed
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.log
+*.bak
+
+# 设备树编译产物
+*.dtbo
+
+# 备份文件
+*.backup
+
