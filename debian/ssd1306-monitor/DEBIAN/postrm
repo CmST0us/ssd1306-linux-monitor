@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+# 重新加载systemd配置
+if [ -d /run/systemd/system ]; then
+    systemctl daemon-reload >/dev/null || true
+fi
+
+

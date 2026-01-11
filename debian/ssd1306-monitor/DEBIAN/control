@@ -1,0 +1,13 @@
+Package: ssd1306-monitor
+Version: 1.0.0-1
+Architecture: arm64
+Maintainer: User <user@example.com>
+Installed-Size: 82
+Depends: libc6 (>= 2.38), systemd
+Section: utils
+Priority: optional
+Homepage: https://github.com/user/SSD1306
+Description: SSD1306 System Monitor Dashboard
+ 一个在SSD1306 OLED显示器上显示系统监控信息的程序
+ 支持实时显示CPU使用率、内存使用率、网络速度和IP地址
+ 包含systemd服务，支持开机自启动

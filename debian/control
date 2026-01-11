@@ -1,0 +1,15 @@
+Source: ssd1306-monitor
+Section: utils
+Priority: optional
+Maintainer: User <user@example.com>
+Build-Depends: debhelper (>= 13), cmake (>= 3.10), gcc, make
+Standards-Version: 4.6.0
+Homepage: https://github.com/user/SSD1306
+
+Package: ssd1306-monitor
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, systemd
+Description: SSD1306 System Monitor Dashboard
+ 一个在SSD1306 OLED显示器上显示系统监控信息的程序
+ 支持实时显示CPU使用率、内存使用率、网络速度和IP地址
+ 包含systemd服务，支持开机自启动

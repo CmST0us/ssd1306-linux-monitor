@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+# 停止并禁用服务
+if [ -f /etc/systemd/system/ssd1306-monitor.service ]; then
+    if systemctl is-active --quiet ssd1306-monitor; then
+        systemctl stop ssd1306-monitor || true
+    fi
+    if systemctl is-enabled --quiet ssd1306-monitor; then
+        systemctl disable ssd1306-monitor || true
+    fi
+fi
+
+

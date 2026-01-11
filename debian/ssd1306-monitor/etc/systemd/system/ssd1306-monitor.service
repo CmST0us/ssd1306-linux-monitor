@@ -1,0 +1,19 @@
+[Unit]
+Description=SSD1306 System Monitor Dashboard
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/usr/bin/
+ExecStart=/usr/bin/SSD1306_Monitor
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
+

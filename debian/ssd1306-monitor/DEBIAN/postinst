@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+# 重新加载systemd配置
+if [ -d /run/systemd/system ]; then
+    systemctl daemon-reload >/dev/null || true
+fi
+
+# 如果服务文件存在，自动启用并启动服务
+if [ -f /etc/systemd/system/ssd1306-monitor.service ]; then
+    # 启用服务（开机自启动）
+    if ! systemctl is-enabled --quiet ssd1306-monitor 2>/dev/null; then
+        systemctl enable ssd1306-monitor >/dev/null 2>&1 || true
+        echo "SSD1306 Monitor服务已启用（开机自启动）。"
+    fi
+    
+    # 启动服务
+    if ! systemctl is-active --quiet ssd1306-monitor; then
+        systemctl start ssd1306-monitor >/dev/null 2>&1 || true
+        echo "SSD1306 Monitor服务已启动。"
+    fi
+fi
+
+
