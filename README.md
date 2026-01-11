@@ -46,22 +46,57 @@ SSD1306/
 - Linux系统（需要I2C支持）
 - 数学库（libm）
 
-## 编译步骤
+## 安装方式
 
-### 1. 创建构建目录
+### 方式1：使用Debian包（推荐）
+
+#### 安装构建依赖
+
+首先安装构建deb包所需的依赖：
+
+```bash
+sudo ./INSTALL_DEPS.sh
+```
+
+或者手动安装：
+
+```bash
+sudo apt-get update
+sudo apt-get install devscripts debhelper cmake build-essential
+```
+
+#### 构建deb包
+
+```bash
+./build_deb.sh
+```
+
+#### 安装deb包
+
+```bash
+cd ..
+sudo dpkg -i ssd1306-monitor_*.deb
+
+# 如果提示依赖问题
+sudo apt-get install -f
+```
+
+### 方式2：从源码编译
+
+#### 1. 创建构建目录
 
 ```bash
 mkdir -p build
 cd build
 ```
 
-### 2. 运行CMake配置
+#### 2. 运行CMake配置
 
 ```bash
 cmake ..
 ```
 
-### 3. 编译
+#### 3. 编译
 
 ```bash
 make
@@ -73,11 +108,28 @@ make
 
 ### 直接运行
 
+如果从源码编译：
 ```bash
 sudo ./build/SSD1306_Monitor
 ```
 
+如果安装了deb包：
+```bash
+sudo SSD1306_Monitor
+```
+
 ### 安装为系统服务（开机自启动）
+
+#### 如果使用deb包安装
+
+服务文件已自动安装，只需启用：
+
+```bash
+sudo systemctl enable ssd1306-monitor
+sudo systemctl start ssd1306-monitor
+```
+
+#### 如果从源码编译
 
 ```bash
 cd scripts
@@ -147,6 +199,16 @@ sudo systemctl disable ssd1306-monitor
 - 确保已安装CMake：`sudo apt-get install cmake`
 - 确保已安装构建工具：`sudo apt-get install build-essential`
 
+## 打包
+
+### 构建Debian包
+
+```bash
+./build_deb.sh
+```
+
+详细说明请参考 `docs/DEBIAN_PACKAGE.md`
+
 ## 开发
 
 ### 代码结构
@@ -155,6 +217,7 @@ sudo systemctl disable ssd1306-monitor
 - **include/**: 所有头文件
 - **scripts/**: 工具脚本
 - **docs/**: 文档
+- **debian/**: Debian打包文件
 
 ### 添加新功能
 

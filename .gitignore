@@ -2,6 +2,16 @@
 build/
 cmake-build-*/
 
+# Debian打包文件
+*.deb
+*.dsc
+*.changes
+*.buildinfo
+debian/files
+debian/.debhelper/
+
+obj-*/
+
 # 编译产物
 *.o
 *.a

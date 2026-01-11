@@ -33,21 +33,3 @@ target_link_libraries(${PROJECT_NAME} m)
 install(TARGETS ${PROJECT_NAME}
     RUNTIME DESTINATION bin
 )
-
-# 安装脚本
-install(FILES scripts/install_service.sh scripts/uninstall_service.sh
-    PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
-    DESTINATION scripts
-)
-
-# 安装服务文件
-install(FILES scripts/ssd1306-monitor.service
-    DESTINATION /etc/systemd/system
-)
-
-# 可选：安装文档
-install(FILES docs/README.md
-    DESTINATION share/${PROJECT_NAME}/docs
-    OPTIONAL
-)
-
